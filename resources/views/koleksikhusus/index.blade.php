@@ -1,0 +1,155 @@
+@extends('layout.app')
+
+@section('title','Data Koleksi Khusus')
+
+@section('content')
+<style>
+    .card-header {
+        background: linear-gradient(135deg, #18283d, #36597e);
+        color: #fff;
+        border: none;
+    }
+</style>
+
+<div class="card shadow-sm border-0">
+    {{-- 🔹 Header Card --}}
+    <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <h5 class="mb-0">Data Koleksi Khusus</h5>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+            {{-- 🔍 Pencarian --}}
+            <div class="input-group input-group-sm" style="width: 230px;">
+                <span class="input-group-text bg-white border-0">
+                    <i class="fa-solid fa-magnifying-glass text-primary"></i>
+                </span>
+                <input type="text" id="searchInput" class="form-control border-0 shadow-sm" placeholder="Cari judul / penulis...">
+            </div>
+
+            {{-- 🗂️ Filter Kategori --}}
+            <select id="filterKategori" class="form-select form-select-sm border-0 shadow-sm bg-light" style="width: 180px;">
+                <option value="">Semua Kategori</option>
+                @foreach(App\Models\KoleksiKhusus::$kategoriOptions as $kategori)
+                    <option value="{{ $kategori }}">{{ $kategori }}</option>
+                @endforeach
+            </select>
+
+            {{-- ➕ Tombol Tambah --}}
+            <a href="{{ route('koleksikhusus.create') }}" class="btn btn-light btn-sm text-primary border-0 shadow-sm d-flex align-items-center">
+                <i class="fa-solid fa-plus me-1"></i> Tambah Koleksi
+            </a>
+        </div>
+    </div>
+
+    {{-- 🔹 Isi Card --}}
+    <div class="card-body">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
+        <div class="table-responsive">
+            <table class="table table-hover table-striped align-middle" id="tabelKoleksi">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>No</th>
+                        <th>Kode</th>
+                        <th>Judul</th>
+                        <th>Penulis</th>
+                        <th>Penerbit</th>
+                        <th>Tahun Terbit</th>
+                        <th>Kategori</th>
+                        <th>Stok</th>
+                        <th>Cover</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody class="text-center">
+                    @foreach($koleksi as $k)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $k->kode_koleksi }}</td>
+                        <td class="judul text-start">{{ $k->judul }}</td>
+                        <td class="penulis">{{ $k->penulis }}</td>
+                        <td class="penerbit">{{ $k->penerbit }}</td>
+                        <td>{{ $k->tahun_terbit }}</td>
+                        <td class="kategori">{{ $k->kategori }}</td>
+                        <td>{{ $k->stok }}</td>
+                        <td>
+                            @if ($k->cover)
+                                <img src="{{ asset('uploads/cover/' . $k->cover) }}" alt="Cover Koleksi" width="60" class="rounded shadow-sm">
+                            @else
+                                <span class="text-muted">Tidak ada</span>
+                            @endif
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="{{ route('koleksikhusus.edit', $k->id) }}" class="btn btn-warning btn-sm">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <form action="{{ route('koleksikhusus.destroy', $k->id) }}" method="POST" onsubmit="return confirm('Yakin mau dihapus?')" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                    @if($koleksi->isEmpty())
+                        <tr>
+                            <td colspan="10" class="text-center text-muted">Data Koleksi kosong</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+        </div>
+
+        {{-- 📊 Info jumlah data --}}
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <small class="text-muted">
+                Total Koleksi: <strong>{{ $koleksi->count() }}</strong>
+            </small>
+        </div>
+    </div>
+</div>
+
+{{-- 🔧 Script filter dan pencarian --}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const filter = document.getElementById('filterKategori');
+    const rows = document.querySelectorAll('#tabelKoleksi tbody tr');
+
+    function filterRows() {
+        const searchValue = searchInput.value.toLowerCase();
+        const selectedKategori = filter.value.toLowerCase();
+
+        rows.forEach(row => {
+            const judul = row.querySelector('.judul')?.textContent.toLowerCase() || '';
+            const penulis = row.querySelector('.penulis')?.textContent.toLowerCase() || '';
+            const penerbit = row.querySelector('.penerbit')?.textContent.toLowerCase() || '';
+            const kategori = row.querySelector('.kategori')?.textContent.toLowerCase() || '';
+
+            const cocokCari =
+                judul.includes(searchValue) ||
+                penulis.includes(searchValue) ||
+                penerbit.includes(searchValue);
+
+            const cocokKategori =
+                !selectedKategori || kategori === selectedKategori;
+
+            row.style.display = (cocokCari && cocokKategori) ? '' : 'none';
+        });
+    }
+
+    searchInput.addEventListener('keyup', filterRows);
+    filter.addEventListener('change', filterRows);
+});
+</script>
+@endsection
