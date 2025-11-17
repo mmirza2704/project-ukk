@@ -7,6 +7,8 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KoleksiKhususController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\KritikSaranController;
+use App\Http\Controllers\UserController;
 
 //Halaman login admin
 Route::get('/admin', [AuthController::class, 'index'])->name('login');
@@ -51,12 +53,20 @@ Route::prefix('admin')->group(function () {
     Route::delete('/kegiatan/delete/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
 });
 
-use App\Http\Controllers\UserController;
+
 //Halaman utama user
 Route::get('/', function () {return view('user.index'); })->name('user.beranda');
 Route::get('/data-buku', [UserController::class, 'dataBuku'])->name('user.dataBuku');
 Route::get('/koleksi-khusus', [UserController::class, 'koleksiKhusus'])->name('user.koleksiKhusus');
 Route::get('/kegiatan', [UserController::class, 'kegiatan'])->name('user.kegiatan');
+
+// user
+Route::get('/kritik-saran', [App\Http\Controllers\KritikSaranController::class, 'create'])->name('kritik.create');
+Route::post('/kritik-saran', [App\Http\Controllers\KritikSaranController::class, 'store'])->name('kritik.store');
+
+// admin
+Route::get('/kritik', [App\Http\Controllers\KritikSaranController::class, 'index'])->name('kritik.index');
+
 
 
 

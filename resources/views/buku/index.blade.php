@@ -9,6 +9,21 @@
         color: #fff;
         border: none;
     }
+
+    /* Pagination styling */
+    .pagination {
+        justify-content: center;
+    }
+    .pagination .page-link {
+        color: #1e3a8a;
+        border-radius: 8px;
+        margin: 0 2px;
+    }
+    .pagination .page-item.active .page-link {
+        background-color: #1e3a8a;
+        border-color: #1e3a8a;
+        color: white;
+    }
 </style>
 
 <div class="card shadow-sm border-0">
@@ -64,9 +79,9 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach($buku as $b)
+                    @forelse($buku as $index => $b)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $buku->firstItem() + $index }}</td>
                         <td>{{ $b->kode_buku }}</td>
                         <td class="judul text-start">{{ $b->judul }}</td>
                         <td class="penulis">{{ $b->penulis }}</td>
@@ -96,22 +111,23 @@
                             </div>
                         </td>
                     </tr>
-                    @endforeach
-
-                    @if($buku->isEmpty())
-                        <tr>
-                            <td colspan="10" class="text-center text-muted">Data Buku kosong</td>
-                        </tr>
-                    @endif
+                    @empty
+                    <tr>
+                        <td colspan="10" class="text-center text-muted">Data Buku kosong</td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
 
-        {{-- 📊 Info jumlah data --}}
-        <div class="d-flex justify-content-between align-items-center mt-3">
+        {{-- 📊 Pagination & Info jumlah data --}}
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
             <small class="text-muted">
-                Total Buku: <strong>{{ $buku->count() }}</strong>
+                Menampilkan <strong>{{ $buku->firstItem() ?? 0 }}</strong>–<strong>{{ $buku->lastItem() ?? 0 }}</strong> dari <strong>{{ $buku->total() }}</strong> buku
             </small>
+
+            {{-- Tombol Previous / Next --}}
+            {{ $buku->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>

@@ -15,7 +15,7 @@ class BukuController extends Controller
         if (!Session::has('users')){
             return redirect()->route('login')->with('Error', 'Masukan Email & Password!!!');
         }
-        $buku = DB::table('buku')->paginate(10); // select * from buku
+        $buku = DB::table('buku')->paginate(5); // select * from buku
         return view('buku.index', compact('buku'));
     }
 

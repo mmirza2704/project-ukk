@@ -22,6 +22,11 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
     }
 
+    .stat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+    }
+
     /* --- Profil --- */
     .profile-header {
         background: linear-gradient(135deg, #18283d, #457b9d);
@@ -110,7 +115,7 @@
                 <h5 class="mb-1">
                     <i class="fas fa-book-open me-2"></i>{{ $jumlahBuku }}
                 </h5>
-                <p class="mb-0">Koleksi Buku</p>
+                <a href="{{route('buku.index')}}"><p class="mb-0">Koleksi Buku</p></a>
             </div>
         </div>
 
@@ -119,7 +124,7 @@
                 <h5 class="mb-1">
                     <i class="fas fa-folder-open me-2"></i>{{ $koleksiKhusus }}
                 </h5>
-                <p class="mb-0">Koleksi Khusus</p>
+                <a href="{{route('koleksikhusus.index')}}"> <p class="mb-0">Koleksi Khusus</p></a>
             </div>
         </div>
 
@@ -128,7 +133,7 @@
                 <h5 class="mb-1">
                     <i class="fas fa-user-friends me-2"></i>{{ $pengunjungHariIni }}
                 </h5>
-                <p class="mb-0">Pengunjung Hari Ini</p>
+                <a href="{{route('pengunjung.index')}}"><p class="mb-0">Pengunjung Hari Ini</p></a>
             </div>
         </div>
 
@@ -137,7 +142,7 @@
                 <h5 class="mb-1">
                     <i class="fas fa-calendar-days me-2"></i>{{ $jumlahKegiatan }}
                 </h5>
-                <p class="mb-0">Total Kegiatan</p>
+                <a href="{{route('kegiatan.index')}}"><p class="mb-0">Total Kegiatan</p></a>
             </div>
         </div>
     </div>

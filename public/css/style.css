@@ -45,6 +45,7 @@ body {
 
 .sidebar .nav-link:hover {
     color: #ffffff;
+    font-size: 16px;
 }
 
 .sidebar .nav-link.active {
@@ -72,19 +73,20 @@ body {
     font-size: 15px;
 }
 
+a{
+    text-decoration: none;
+    color: #fff;
+}
 
-/* ===== Animations ===== */
-/* @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-} */
+  /* Hover underline animation */
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #d2d1d0;
+      transition: width 0.3s ease;
+    }
 
-/* @keyframes slideInSidebar {
-    from { transform: translateX(-100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-} */
-
-/* @keyframes contentAppear {
-    from { transform: scale(0.98); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-} */

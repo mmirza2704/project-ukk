@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title','Perpustakaan Mini')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('fontawesome/css/all.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -42,9 +41,15 @@
                     <i class="fa-solid fa-calendar-days me-2"></i> Kegiatan
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('kritik.index') }}" class="nav-link {{ Route::is('kritik.index') ? 'active' : '' }}">
+                    <i class="fa-solid fa-comment-dots me-2"></i> Kritik & Saran
+                </a>
+            </li>
             <li class="nav-item mt-3">
                 <a href="{{ route('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
             </li>
+
         </ul>
     </nav>
 
@@ -54,6 +59,7 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>
