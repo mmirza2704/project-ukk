@@ -18,6 +18,24 @@
   width: 100vw;
   height: auto;
   display: block;
+
+  .menu-card {
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: .2s;
+  }
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .menu-card h5 {
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
 }
 
 
@@ -45,13 +63,53 @@
   </button>
 </div>
 
-<!-- Deskripsi -->
-<div class="card shadow-sm border-0 p-4 mx-auto mt-4" style="max-width: 900px;">
-  <h3 class="fw-semibold text-primary">Selamat Datang di Perpustakaan Kami</h3>
-  <p class="mt-2 text-secondary">
-    Perpustakaan kami menyediakan berbagai koleksi buku dan referensi menarik yang dapat membantu
-    meningkatkan wawasan dan pengetahuan. Selain itu, tersedia juga koleksi khusus dan kegiatan literasi
-    yang dapat diikuti oleh seluruh pengunjung.
-  </p>
+<div class="container mt-5">
+    <div class="row text-center g-4">
+
+        <!-- Card Data Buku -->
+        <div class="col-md-3">
+            <div class="card shadow-lg p-3">
+                <i class="fa fa-book fa-3x text-primary text-center mb-3 d-flex mx-auto"></i>
+                <h5 class="fw-bold">Data Buku</h5>
+                <p class="text-muted">Lihat semua koleksi buku perpustakaan.</p>
+                <a href="{{ route('user.dataBuku') }}" class="btn btn-primary w-100">Lihat</a>
+            </div>
+        </div>
+
+        <!-- Card Koleksi Khusus -->
+        <div class="col-md-3">
+            <div class="card shadow-lg p-3 text-center">
+                <i class="fas fa-star fa-3x text-warning mb-3 d-flex mx-auto"></i>
+                <h5 class="fw-bold">Koleksi Khusus</h5>
+                <p class="text-muted">Koleksi buku langka, manuskrip, dan arsip penting.</p>
+                <a href="{{ route('user.koleksiKhusus') }}" class="btn btn-primary w-100">Lihat</a>
+            </div>
+        </div>
+
+        <!-- Card Kegiatan -->
+        <div class="col-md-3">
+            <div class="card shadow-lg p-3">
+                <i class="fas fa-calendar-alt fa-3x text-success mb-3 d-flex mx-auto"></i>
+                <h5 class="fw-bold">Kegiatan</h5>
+                <p class="text-muted">Informasi kegiatan dan event terbaru.</p>
+                <a href="{{ route('user.kegiatan') }}" class="btn btn-primary w-100">Lihat</a>
+            </div>
+        </div>
+
+        <!-- Card Kritik & Saran -->
+        <div class="col-md-3">
+            <div class="card shadow-lg p-3">
+                <i class="fas fa-comments fa-3x text-info mb-3 d-flex mx-auto"></i>
+                <h5 class="fw-bold">Kritik & Saran</h5>
+                <p class="text-muted">Berikan masukan untuk meningkatkan layanan.</p>
+
+                {{-- Ganti nama route sesuai punya kamu --}}
+                <a href="{{ route('kritik.create') }}" class="btn btn-primary w-100">Isi Form</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 </div>
 @endsection

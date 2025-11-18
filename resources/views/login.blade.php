@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Login Admin</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('fontawesome/css/all.css')}}" rel="stylesheet">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -33,15 +32,21 @@
       width: 100%;
       max-width: 360px;
     }
-    .logo {
-      font-size: 50px;
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      padding: 20px;
-      margin-bottom: 15px;
-      border: 2px solid rgba(255,255,255,0.6);
-    }
+   .logo {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    padding: 20px;
+    margin: 0 auto 15px;
+    border: 2px solid rgba(255,255,255,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    color: #ffffff;
+    font-size: 50px;
+}
+
     .form-control::placeholder {
       color: rgba(255,255,255,0.8);
     }
@@ -50,7 +55,8 @@
 <body>
 
   <div class="login-card text-center shadow-lg">
-    <i class="logo fa fa-user"></i>
+    <i class="logo fa-solid fa-user"></i>
+
     <h4 class="fw-semibold mb-3">Login Admin</h4>
 
     @if (Session('Error'))

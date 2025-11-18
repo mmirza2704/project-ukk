@@ -10,6 +10,20 @@
     <link href="{{asset('fontawesome/css/all.css')}}" rel="stylesheet">
 
   <style>
+
+    html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f5f6fa;
@@ -105,6 +119,28 @@
   <div class="main-content">
     @yield('content')
   </div>
+
+  <!-- FOOTER -->
+  <footer class="mt-5 py-4 text-center text-white"
+          style="background: linear-gradient(135deg, #18283d, #36597e);">
+    <div class="container">
+      <h5 class="fw-semibold mb-2">Perpustakaan</h5>
+      <p class="mb-2">Menyediakan informasi dan layanan untuk mendukung literasi.</p>
+
+      <div class="d-flex justify-content-center gap-3 mb-3">
+        <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+      </div>
+
+      <small>&copy; {{ date('Y') }} Perpustakaan. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>
 
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
