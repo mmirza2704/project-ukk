@@ -69,7 +69,7 @@
             <div class="mb-3">
                 <label for="cover" class="form-label fw-semibold">Cover (gambar)</label><br>
                 @if($buku->cover)
-                    <img src="{{ asset('storage/'.$buku->cover) }}" alt="Cover Buku" width="120" class="mb-2 rounded shadow-sm">
+                    <img src="{{ asset('uploads/cover/'.$buku->cover) }}" alt="Cover Buku" width="120" class="mb-2 rounded shadow-sm">
                 @endif
                 <input type="file" name="cover" id="cover" class="form-control shadow-sm">
                 <small class="text-muted">Biarkan kosong jika tidak ingin mengganti cover.</small>

@@ -44,13 +44,13 @@
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('img/carousel2.png') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/3.png') }}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('img/carousel3.png') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/6.png') }}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('img/carousel4.png') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/7.png') }}" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -79,7 +79,7 @@
         <!-- Card Koleksi Khusus -->
         <div class="col-md-3">
             <div class="card shadow-lg p-3 text-center">
-                <i class="fas fa-star fa-3x text-warning mb-3 d-flex mx-auto"></i>
+                <i class="fas fa-folder-open fa-3x text-warning mb-3 d-flex mx-auto"></i>
                 <h5 class="fw-bold">Koleksi Khusus</h5>
                 <p class="text-muted">Koleksi buku langka, manuskrip, dan arsip penting.</p>
                 <a href="{{ route('user.koleksiKhusus') }}" class="btn btn-primary w-100">Lihat</a>
