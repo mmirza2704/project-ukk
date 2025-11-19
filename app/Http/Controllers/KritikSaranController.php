@@ -33,5 +33,12 @@ class KritikSaranController extends Controller
         $data = KritikSaran::latest()->get();
         return view('kritik.index', compact('data'));
     }
+
+    public function destroy($id)
+{
+    KritikSaran::findOrFail($id)->delete();
+    return redirect()->back()->with('success', 'Kritik & saran berhasil dihapus!');
+}
+
 }
 

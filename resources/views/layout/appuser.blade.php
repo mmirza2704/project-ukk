@@ -15,6 +15,10 @@
   height: 100%;
 }
 
+ h3 {
+        color: #242d4a !important;
+    }
+
 body {
   display: flex;
   flex-direction: column;

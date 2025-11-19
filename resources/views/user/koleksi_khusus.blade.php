@@ -51,7 +51,7 @@
 
 @section('content')
 
-<h3 class="fw-semibold mb-4 mt-3 text-dark text-center">Data Koleksi Khusus</h3>
+<h3 class="fw-semibold mb-4 mt-3 text-center"><i class="fa-solid fa-folder-open me-2"></i>Data Koleksi Khusus</h3>
 
 <div class="container mb-5">
     <div class="row g-4">

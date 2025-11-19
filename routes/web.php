@@ -61,11 +61,13 @@ Route::get('/koleksi-khusus', [UserController::class, 'koleksiKhusus'])->name('u
 Route::get('/kegiatan', [UserController::class, 'kegiatan'])->name('user.kegiatan');
 
 // user
-Route::get('/kritik-saran', [App\Http\Controllers\KritikSaranController::class, 'create'])->name('kritik.create');
-Route::post('/kritik-saran', [App\Http\Controllers\KritikSaranController::class, 'store'])->name('kritik.store');
+Route::get('/kritik-saran', [KritikSaranController::class, 'create'])->name('kritik.create');
+Route::post('/kritik-saran', [KritikSaranController::class, 'store'])->name('kritik.store');
 
 // admin
-Route::get('/kritik', [App\Http\Controllers\KritikSaranController::class, 'index'])->name('kritik.index');
+Route::get('/kritik', [KritikSaranController::class, 'index'])->name('kritik.index');
+Route::delete('/kritik/{id}', [KritikSaranController::class, 'destroy'])->name('kritik.destroy');
+
 
 
 
