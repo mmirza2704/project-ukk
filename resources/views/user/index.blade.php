@@ -47,7 +47,7 @@
       <img src="{{ asset('img/3.png') }}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('img/6.png') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/8.png') }}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
       <img src="{{ asset('img/7.png') }}" class="d-block w-100" alt="...">

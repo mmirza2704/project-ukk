@@ -68,34 +68,37 @@
                                     data-bs-target="#detailModal{{ $item->id }}">
                                     Lihat detail
                                 </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">{{ $item->judul }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img src="{{ asset('uploads/cover/' . $item->cover) }}"
+                                                    class="img-fluid rounded mb-3">
+
+                                                <p><strong>Judul:</strong> {{ $item->judul }}</p>
+                                                <p><strong>Penulis:</strong> {{ $item->penulis }}</p>
+                                                <p><strong>Penerbit:</strong> {{ $item->penerbit }}</p>
+                                                <p><strong>Tahun Terbit:</strong> {{ $item->tahun_terbit }}</p>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Tutup</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <h5 class="modal-title">{{ $item->judul }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-
-                            <div class="modal-body">
-                                <img src="{{ asset('uploads/cover/' . $item->cover) }}" class="img-fluid rounded mb-3">
-
-                                <p><strong>Judul:</strong> {{ $item->judul }}</p>
-                                <p><strong>Penulis:</strong> {{ $item->penulis }}</p>
-                                <p><strong>Penerbit:</strong> {{ $item->penerbit }}</p>
-                                <p><strong>Tahun Terbit:</strong> {{ $item->tahun_terbit }}</p>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                            </div>
-
                         </div>
                     </div>
                 </div>
